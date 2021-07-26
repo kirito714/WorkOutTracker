@@ -1,4 +1,6 @@
-// module for exporting
+// module for exporting 
 module.exports = {
-    Workout:require("./workOut")
+    Workout:require("./workout")
 }
+
+
