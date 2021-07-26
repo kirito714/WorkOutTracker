@@ -25,5 +25,16 @@ router.get("/api/workouts", (req, res) => {
       res.status(400).json(err);
     });
 });
+router.put("/api/workouts/:id", (req, res) => {
+    workout
+      .updateOne({ _id: req.params.id }, { $push: { exercises: req.body } })
+      .then((dbWorkOut) => {
+        res.json(dbWorkOut);
+      })
+      .catch((err) => {
+        res.status(400).json(err);
+      });
+  });
+
 
 module.exports = router;
