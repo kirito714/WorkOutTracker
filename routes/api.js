@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const workout = require("../models/workout.js");
 
+// add get to apo/workouts
 router.get("/api/workouts", (req, res) => {
   workout
     .aggregate([
@@ -38,12 +39,14 @@ router.get("/api/workouts/range", (req, res) => {
     });
 });
 //post
-router.post("/api/workouts", ({body},res)=>{
-    workout.create(body).then((dbWorkout) =>{
-        res.json(dbWorkout);
+router.post("/api/workouts", ({ body }, res) => {
+  workout
+    .create(body)
+    .then((dbWorkout) => {
+      res.json(dbWorkout);
     })
     .catch((err) => {
-        res.status(400).json(err);
-      });
-})
+      res.status(400).json(err);
+    });
+});
 module.exports = router;
